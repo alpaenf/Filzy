@@ -137,3 +137,37 @@ Only plain objects can be passed to Client Components from Server Components. Cl
 Ô£ô Compiled in 2.7s
 Ôùï Compiling / ...
  GET / 200 in 6.9s (compile: 6.9s, render: 77ms)
+Ô£ô Compiled in 781ms
+ GET / 200 in 754ms (compile: 572ms, render: 182ms)
+ GET / 200 in 84ms (compile: 6ms, render: 79ms)
+ GET / 200 in 82ms (compile: 8ms, render: 74ms)
+ GET / 200 in 46ms (compile: 8ms, render: 38ms)
+Ô£ô Compiled in 3.1s
+ GET / 200 in 947ms (compile: 75ms, render: 872ms)
+ GET / 200 in 2.3s (compile: 825ms, render: 1436ms)
+ GET / 200 in 1130ms (compile: 8ms, render: 1122ms)
+ GET / 200 in 211ms (compile: 28ms, render: 183ms)
+ GET / 200 in 61ms (compile: 9ms, render: 51ms)
+ GET / 200 in 168ms (compile: 12ms, render: 156ms)
+Ô£ô Finished writing to filesystem cache in 28.6s
+Ô£ô Compiled in 3.8s
+Ô£ô Finished filesystem cache database compaction in 49s
+Ô£ô Finished writing to filesystem cache in 47s
+Ô£ô Compiled in 2.1s
+Ô£ô Compiled in 7.1s
+Ô£ô Compiled in 462ms
+Ô£ô Compiled in 62ms
+Ô£ô Compiled in 59ms
+Ô£ô Compiled in 103ms
+Ô£ô Compiled in 144ms
+Ô£ô Compiled in 1273ms
+Ô£ô Compiled in 251ms
+ GET / 200 in 583ms (compile: 388ms, render: 195ms)
+ GET / 200 in 123ms (compile: 7ms, render: 115ms)
+ GET / 200 in 87ms (compile: 5ms, render: 82ms)
+ GET / 200 in 50ms (compile: 15ms, render: 35ms)
+Ô£ô Compiled in 224ms
+ GET /tools/image-convert 200 in 3.2s (compile: 1059ms, render: 2.1s)
+ GET /tools/image-convert 200 in 1429ms (compile: 19ms, render: 1410ms)
+ GET /tools/image-convert 200 in 348ms (compile: 250ms, render: 99ms)
+ GET /tools/image-convert 200 in 1508ms (compile: 133ms, render: 1375ms)

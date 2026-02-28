@@ -4,17 +4,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, Menu, X } from "lucide-react";
+import { Sun, Moon, Menu, X, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const navLinks = [
-  { label: "Tools", href: "/#tools" },
-  { label: "Features", href: "/#features" },
-  { label: "About", href: "/#about" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Navbar() {
   const { theme, setTheme, resolvedTheme } = useTheme();
+  const { locale, setLocale, t } = useLanguage();
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -27,6 +23,12 @@ export default function Navbar() {
   }, []);
 
   const isDark = resolvedTheme === "dark";
+
+  const navLinks = [
+    { label: t.nav.tools, href: "/#tools" },
+    { label: t.nav.features, href: "/#features" },
+    { label: t.nav.about, href: "/#about" },
+  ];
 
   return (
     <motion.header
@@ -84,12 +86,32 @@ export default function Navbar() {
             </motion.button>
           )}
 
+          {/* Language toggle */}
+          {mounted && (
+            <div className="flex items-center rounded-xl border border-slate-200 dark:border-gray-700 overflow-hidden">
+              {(["id", "en"] as const).map((lang) => (
+                <button
+                  key={lang}
+                  onClick={() => setLocale(lang)}
+                  className={cn(
+                    "px-2.5 py-1.5 text-xs font-semibold uppercase transition-colors duration-150",
+                    locale === lang
+                      ? "bg-sky-500 text-white"
+                      : "text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white"
+                  )}
+                >
+                  {lang}
+                </button>
+              ))}
+            </div>
+          )}
+
           <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
             <Link
               href="/#tools"
               className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-sky-500 to-violet-600 text-white shadow-md hover:shadow-sky-500/30 transition-shadow duration-300"
             >
-              Get Started
+              {t.nav.getStarted}
             </Link>
           </motion.div>
 

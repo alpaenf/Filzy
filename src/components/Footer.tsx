@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="border-t border-slate-200 dark:border-gray-800 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -12,12 +16,12 @@ export default function Footer() {
           </Link>
 
           <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
-            All processing happens in your browser.{" "}
-            <span className="font-medium text-gray-700 dark:text-gray-300">Your files never leave your device.</span>
+            {t.footer.privacy}{" "}
+            <span className="font-medium text-gray-700 dark:text-gray-300">{t.footer.privacyHighlight}</span>
           </p>
 
           <div className="flex items-center gap-6">
-            {["Privacy", "Terms", "GitHub"].map((item) => (
+            {t.footer.links.map((item) => (
               <Link
                 key={item}
                 href="#"
@@ -31,7 +35,7 @@ export default function Footer() {
 
         <div className="mt-8 pt-6 border-t border-slate-100 dark:border-gray-800 text-center">
           <p className="text-xs text-gray-400 dark:text-gray-600">
-            © {new Date().getFullYear()} Filzy. Built for privacy-first file processing.
+            © {new Date().getFullYear()} Filzy. {t.footer.copyright}
           </p>
         </div>
       </div>
