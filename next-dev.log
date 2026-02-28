@@ -175,3 +175,5 @@ Only plain objects can be passed to Client Components from Server Components. Cl
 Ô£ô Compiled in 199ms
  GET / 200 in 404ms (compile: 283ms, render: 121ms)
 Ô£ô Compiled in 150ms
+Ô£ô Compiled in 538ms
+Ô£ô Compiled in 102ms

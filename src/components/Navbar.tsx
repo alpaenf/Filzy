@@ -35,14 +35,14 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
-        scrolled
-          ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-slate-200/60 dark:border-gray-700/60 shadow-sm"
-          : "bg-transparent"
-      )}
+      className="sticky top-0 z-50 w-full px-4 sm:px-6 lg:px-8 pt-3 pb-1"
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <nav className={cn(
+        "max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between rounded-2xl transition-all duration-300",
+        scrolled
+          ? "bg-white/85 dark:bg-gray-900/85 backdrop-blur-xl border border-slate-200/70 dark:border-gray-700/60 shadow-md"
+          : "bg-white/60 dark:bg-gray-900/60 backdrop-blur-md border border-slate-200/50 dark:border-gray-700/40"
+      )}>
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
@@ -131,7 +131,7 @@ export default function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="md:hidden overflow-hidden border-b border-slate-200 dark:border-gray-700 bg-white dark:bg-gray-900"
+            className="md:hidden overflow-hidden rounded-2xl mt-1 border border-slate-200 dark:border-gray-700 bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl shadow-md"
           >
             <div className="px-4 py-4 flex flex-col gap-3">
               {navLinks.map((link) => (
