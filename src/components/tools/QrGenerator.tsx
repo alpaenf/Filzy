@@ -56,11 +56,13 @@ export default function QrGeneratorTool() {
     setGenerated(true);
   }, [text, size, errorLevel, fgColor, bgColor, format, scheme]);
 
-  // Auto-generate on mount and when settings change
+  // Auto-generate when settings change (debounced for text)
   useEffect(() => {
-    if (text.trim()) generate();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [size, errorLevel, fgColor, bgColor, format, scheme]);
+    if (!text.trim()) return;
+    const timer = setTimeout(() => generate(), 400);
+    return () => clearTimeout(timer);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [text, size, errorLevel, fgColor, bgColor, format, scheme]);
 
   const download = () => {
     if (format === "png") {
@@ -170,30 +172,33 @@ export default function QrGeneratorTool() {
         </div>
       </div>
 
-      {/* Preview */}
-      {generated && (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-700 p-6 shadow-sm flex flex-col items-center gap-5"
-        >
-          <p className="text-sm font-medium text-gray-900 dark:text-white self-start">Preview</p>
-          {format === "png" ? (
-            <canvas ref={canvasRef} className="rounded-xl shadow-md max-w-full" />
-          ) : (
-            <div
-              className="rounded-xl shadow-md overflow-hidden max-w-full"
-              style={{ width: size, maxWidth: "100%" }}
-              dangerouslySetInnerHTML={{ __html: svgContent }}
-            />
-          )}
-          {/* hidden canvas for PNG when in SVG mode */}
-          <canvas ref={canvasRef} className="hidden" />
-          <Button onClick={download} className="bg-emerald-500 hover:bg-emerald-600 text-white">
-            <Download className="w-3.5 h-3.5 mr-1" /> Download {format.toUpperCase()}
-          </Button>
-        </motion.div>
-      )}
+      {/* Preview — canvas always in DOM so ref is stable; hidden via CSS when not needed */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: generated ? 1 : 0, y: generated ? 0 : 10 }}
+        className={`bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-700 p-6 shadow-sm flex flex-col items-center gap-5 ${!generated ? "pointer-events-none" : ""}`}
+      >
+        <p className="text-sm font-medium text-gray-900 dark:text-white self-start">Preview</p>
+
+        {/* Single canvas — always mounted, ref always valid */}
+        <canvas
+          ref={canvasRef}
+          className={`rounded-xl shadow-md max-w-full ${format !== "png" ? "hidden" : ""}`}
+        />
+
+        {/* SVG preview */}
+        {format === "svg" && svgContent && (
+          <div
+            className="rounded-xl shadow-md overflow-hidden max-w-full"
+            style={{ width: size, maxWidth: "100%" }}
+            dangerouslySetInnerHTML={{ __html: svgContent }}
+          />
+        )}
+
+        <Button onClick={download} className="bg-emerald-500 hover:bg-emerald-600 text-white">
+          <Download className="w-3.5 h-3.5 mr-1" /> Download {format.toUpperCase()}
+        </Button>
+      </motion.div>
     </div>
   );
 }

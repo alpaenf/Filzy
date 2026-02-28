@@ -14,7 +14,7 @@ export default function QrCodePage() {
       title="QR Code Generator"
       description="Generate custom QR codes from URLs, text, email, phone, or WiFi credentials. Customize colors and download as PNG or SVG — all in your browser."
       icon={<QrCode className="w-7 h-7 text-white" strokeWidth={1.75} />}
-      gradient="from-violet-400 to-purple-600"
+      gradient="from-cyan-400 to-cyan-600"
     >
       <QrGeneratorTool />
     </ToolPageLayout>

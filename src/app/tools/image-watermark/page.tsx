@@ -14,7 +14,7 @@ export default function ImageWatermarkPage() {
       title="Image Watermark"
       description="Add text watermarks to your images with full control over position, opacity, font size, rotation, and color. Processing is done entirely in your browser."
       icon={<Stamp className="w-7 h-7 text-white" strokeWidth={1.75} />}
-      gradient="from-pink-400 to-rose-500"
+      gradient="from-cyan-400 to-cyan-600"
     >
       <ImageWatermarkTool />
     </ToolPageLayout>

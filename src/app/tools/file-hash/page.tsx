@@ -14,7 +14,7 @@ export default function FileHashPage() {
       title="File Hash Calculator"
       description="Verify file integrity by computing SHA-1, SHA-256, SHA-384, or SHA-512 checksums. Uses the browser's built-in Web Crypto API — your files never leave your device."
       icon={<ShieldCheck className="w-7 h-7 text-white" strokeWidth={1.75} />}
-      gradient="from-emerald-400 to-teal-600"
+      gradient="from-cyan-400 to-cyan-600"
     >
       <FileHashTool />
     </ToolPageLayout>
