@@ -8,30 +8,46 @@ import { useState, useEffect } from "react";
 
 const highlightIcons = [Shield, Zap, Cpu];
 
+const TYPE_SPEED = 18;   // ms per char typing
+const DELETE_SPEED = 10; // ms per char deleting
+const PAUSE_FULL = 3000; // ms pause when fully typed
+const PAUSE_EMPTY = 600; // ms pause when fully deleted
+
 function TypingText({ text, delay = 0 }: { text: string; delay?: number }) {
   const [displayed, setDisplayed] = useState("");
-  const [started, setStarted] = useState(false);
+  const [phase, setPhase] = useState<"waiting" | "typing" | "pausing" | "deleting" | "pauseEmpty">("waiting");
 
   useEffect(() => {
-    const startTimer = setTimeout(() => setStarted(true), delay * 1000);
-    return () => clearTimeout(startTimer);
+    const t0 = setTimeout(() => setPhase("typing"), delay * 1000);
+    return () => clearTimeout(t0);
   }, [delay]);
 
   useEffect(() => {
-    if (!started) return;
-    if (displayed.length >= text.length) return;
-    const timer = setTimeout(() => {
-      setDisplayed(text.slice(0, displayed.length + 1));
-    }, 18);
+    let timer: ReturnType<typeof setTimeout>;
+
+    if (phase === "typing") {
+      if (displayed.length < text.length) {
+        timer = setTimeout(() => setDisplayed(text.slice(0, displayed.length + 1)), TYPE_SPEED);
+      } else {
+        timer = setTimeout(() => setPhase("pausing"), PAUSE_FULL);
+      }
+    } else if (phase === "pausing") {
+      setPhase("deleting");
+    } else if (phase === "deleting") {
+      if (displayed.length > 0) {
+        timer = setTimeout(() => setDisplayed((d) => d.slice(0, -1)), DELETE_SPEED);
+      } else {
+        timer = setTimeout(() => setPhase("typing"), PAUSE_EMPTY);
+      }
+    }
+
     return () => clearTimeout(timer);
-  }, [started, displayed, text]);
+  }, [phase, displayed, text]);
 
   return (
     <span>
       {displayed}
-      {displayed.length < text.length && (
-        <span className="inline-block w-0.5 h-5 ml-0.5 bg-cyan-500 align-middle animate-pulse" />
-      )}
+      <span className="inline-block w-0.5 h-5 ml-0.5 bg-cyan-500 align-middle animate-pulse" />
     </span>
   );
 }

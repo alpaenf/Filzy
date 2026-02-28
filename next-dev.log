@@ -188,3 +188,4 @@ Only plain objects can be passed to Client Components from Server Components. Cl
  GET /tools/image-convert 200 in 195ms (compile: 11ms, render: 184ms)
  GET / 200 in 69ms (compile: 38ms, render: 31ms)
  GET /tools/image-convert 200 in 74ms (compile: 9ms, render: 66ms)
+Ô£ô Compiled in 611ms
