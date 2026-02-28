@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const statValues = ["13+", "100%", "0 KB", "Free"];
+const statValues = ["15+", "100%", "0 KB", "Free"];
 
 export default function AboutSection() {
   const { t } = useLanguage();

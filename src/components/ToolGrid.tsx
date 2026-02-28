@@ -14,6 +14,8 @@ import {
   Clapperboard,
   Repeat2,
   Music,
+  FileText,
+  FileOutput,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import ToolCard from "./ToolCard";
@@ -34,6 +36,8 @@ const toolIcons: Record<string, LucideIcon> = {
   "video-to-gif": Clapperboard,
   "gif-to-video": Repeat2,
   "video-to-mp3": Music,
+  "pdf-to-word": FileText,
+  "word-to-pdf": FileOutput,
 };
 
 const toolMeta = [
@@ -47,9 +51,11 @@ const toolMeta = [
   { id: "pdf-compress", href: "/tools/pdf-compress", gradient: "from-cyan-400 to-cyan-600", category: "pdf" as const },
   { id: "bulk-rename", href: "/tools/bulk-rename", gradient: "from-cyan-400 to-cyan-600", category: "file" as const },
   { id: "file-info", href: "/tools/file-info", gradient: "from-cyan-400 to-cyan-600", category: "file" as const },
-  { id: "video-to-gif", href: "/tools/video-to-gif", gradient: "from-violet-400 to-purple-600", category: "video" as const },
-  { id: "gif-to-video", href: "/tools/gif-to-video", gradient: "from-violet-400 to-purple-600", category: "video" as const },
-  { id: "video-to-mp3", href: "/tools/video-to-mp3", gradient: "from-violet-400 to-purple-600", category: "video" as const },
+  { id: "video-to-gif", href: "/tools/video-to-gif", gradient: "from-cyan-400 to-cyan-600", category: "video" as const },
+  { id: "gif-to-video", href: "/tools/gif-to-video", gradient: "from-cyan-400 to-cyan-600", category: "video" as const },
+  { id: "video-to-mp3", href: "/tools/video-to-mp3", gradient: "from-cyan-400 to-cyan-600", category: "video" as const },
+  { id: "pdf-to-word", href: "/tools/pdf-to-word", gradient: "from-cyan-400 to-cyan-600", category: "pdf" as const },
+  { id: "word-to-pdf", href: "/tools/word-to-pdf", gradient: "from-cyan-400 to-cyan-600", category: "pdf" as const },
 ];
 
 export default function ToolGrid() {

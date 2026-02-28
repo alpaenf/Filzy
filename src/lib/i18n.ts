@@ -79,6 +79,14 @@ export const translations = {
           title: "Video to MP3",
           description: "Extract audio from MP4, WebM, or MOV videos and save as MP3. No uploads, runs fully in browser.",
         },
+        "pdf-to-word": {
+          title: "PDF to Word",
+          description: "Convert PDF files into editable Word (.docx) documents. Text is extracted page by page — all in browser.",
+        },
+        "word-to-pdf": {
+          title: "Word to PDF",
+          description: "Convert Word (.docx) documents into PDF files. Laid out on A4 pages, processed entirely in your browser.",
+        },
       },
     },
     features: {
@@ -230,6 +238,14 @@ export const translations = {
         "video-to-mp3": {
           title: "Video ke MP3",
           description: "Ekstrak audio dari video MP4, WebM, atau MOV dan simpan sebagai MP3. Tanpa upload, berjalan penuh di browser.",
+        },
+        "pdf-to-word": {
+          title: "PDF ke Word",
+          description: "Konversi file PDF menjadi dokumen Word (.docx) yang bisa diedit. Teks diekstrak per halaman — semua di browser.",
+        },
+        "word-to-pdf": {
+          title: "Word ke PDF",
+          description: "Konversi dokumen Word (.docx) menjadi file PDF. Ditata dalam halaman A4, diproses sepenuhnya di browsermu.",
         },
       },
     },
