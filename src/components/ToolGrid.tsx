@@ -9,6 +9,8 @@ import {
   Archive,
   PenLine,
   BarChart3,
+  Images,
+  FileImage,
 } from "lucide-react";
 import ToolCard from "./ToolCard";
 import type { Tool } from "@/types";
@@ -67,6 +69,24 @@ const tools: Tool[] = [
     icon: Archive,
     href: "/tools/pdf-compress",
     gradient: "from-red-400 to-rose-500",
+    category: "pdf",
+  },
+  {
+    id: "image-to-pdf",
+    title: "Image to PDF",
+    description: "Convert JPG, PNG, or WEBP images into a PDF. Set page size, orientation, and margins.",
+    icon: Images,
+    href: "/tools/image-to-pdf",
+    gradient: "from-sky-400 to-indigo-500",
+    category: "image",
+  },
+  {
+    id: "pdf-to-image",
+    title: "PDF to Image",
+    description: "Convert PDF pages to high-quality JPEG or PNG images. Adjust resolution and download as ZIP.",
+    icon: FileImage,
+    href: "/tools/pdf-to-image",
+    gradient: "from-fuchsia-400 to-pink-500",
     category: "pdf",
   },
   {
