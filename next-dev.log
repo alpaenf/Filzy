@@ -75,3 +75,11 @@ Only plain objects can be passed to Client Components from Server Components. Cl
  GET / 200 in 452ms (compile: 50ms, render: 402ms)
 Ô£ô Compiled in 362ms
  GET / 200 in 450ms (compile: 135ms, render: 314ms)
+Ôùï Compiling /tools/pdf-merge ...
+ GET /tools/pdf-merge 200 in 5.4s (compile: 5.1s, render: 304ms)
+ GET /tools/image-convert 200 in 1466ms (compile: 1355ms, render: 111ms)
+Ô£ô Compiled in 452ms
+Ô£ô Compiled in 112ms
+Ô£ô Compiled in 61ms
+ GET / 200 in 114ms (compile: 37ms, render: 76ms)
+Ô£ô Compiled in 249ms

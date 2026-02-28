@@ -34,6 +34,27 @@ export default function RemoveBgTool() {
     setItems((prev) => [...prev, ...newItems]);
   }, []);
 
+  const compressToWebP = (blob: Blob, quality = 0.88): Promise<Blob> =>
+    new Promise((resolve, reject) => {
+      const img = new Image();
+      const tmpUrl = URL.createObjectURL(blob);
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        const ctx = canvas.getContext("2d")!;
+        ctx.drawImage(img, 0, 0);
+        URL.revokeObjectURL(tmpUrl);
+        canvas.toBlob(
+          (b) => (b ? resolve(b) : reject(new Error("Compression failed"))),
+          "image/webp",
+          quality
+        );
+      };
+      img.onerror = reject;
+      img.src = tmpUrl;
+    });
+
   const processItem = useCallback(async (index: number) => {
     setItems((prev) =>
       prev.map((item, i) =>
@@ -42,7 +63,6 @@ export default function RemoveBgTool() {
     );
 
     try {
-      // Dynamic import to avoid SSR issues
       const { removeBackground } = await import("@imgly/background-removal");
 
       if (!modelLoaded && !modelLoadingRef.current) {
@@ -55,21 +75,23 @@ export default function RemoveBgTool() {
 
       const file = items[index].original;
 
-      // Run background removal
-      const resultBlob = await removeBackground(file, {
+      const rawBlob = await removeBackground(file, {
         progress: (key: string, current: number, total: number) => {
           if (total > 0) {
-            const pct = Math.round((current / total) * 90) + 10;
+            const pct = Math.round((current / total) * 80) + 10;
             setItems((prev) =>
               prev.map((item, i) => (i === index ? { ...item, progress: pct } : item))
             );
           }
         },
-        output: {
-          format: "image/png",
-          quality: 1,
-        },
+        output: { format: "image/png", quality: 1 },
       });
+
+      // Compress PNG → WebP to avoid file size bloat
+      setItems((prev) =>
+        prev.map((item, i) => (i === index ? { ...item, progress: 92 } : item))
+      );
+      const resultBlob = await compressToWebP(rawBlob);
 
       setModelLoaded(true);
       modelLoadingRef.current = false;
@@ -111,7 +133,7 @@ export default function RemoveBgTool() {
 
   const downloadItem = (item: BgRemovalItem) => {
     if (!item.resultBlob) return;
-    downloadBlob(item.resultBlob, `${item.original.name.replace(/\.[^/.]+$/, "")}_no-bg.png`);
+    downloadBlob(item.resultBlob, `${item.original.name.replace(/\.[^/.]+$/, "")}_no-bg.webp`);
   };
 
   const getStatusLabel = (item: BgRemovalItem) => {
@@ -119,7 +141,7 @@ export default function RemoveBgTool() {
       case "loading-model":
         return "Loading AI model (first time only)...";
       case "processing":
-        return "Removing background...";
+        return item.progress >= 90 ? "Compressing output..." : "Removing background...";
       default:
         return "";
     }
@@ -168,32 +190,31 @@ export default function RemoveBgTool() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, x: -20 }}
-            className="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-700 p-5 shadow-sm"
+            className="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-700 p-4 shadow-sm"
           >
-            <div className="flex gap-4">
-              {/* Before / After preview */}
-              <div className="flex gap-3 shrink-0">
-                {/* Original */}
-                <div className="relative">
+            {/* Header: thumbnails + remove btn */}
+            <div className="flex items-start gap-3 mb-4">
+              <div className="flex gap-2 flex-1 min-w-0">
+                {/* Before */}
+                <div className="relative shrink-0">
                   <img
                     src={item.originalUrl}
                     alt="original"
-                    className="w-24 h-24 object-cover rounded-xl border border-slate-200 dark:border-gray-600"
+                    className="w-[72px] h-[72px] sm:w-24 sm:h-24 object-cover rounded-xl border border-slate-200 dark:border-gray-600"
                   />
-                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 text-[9px] bg-slate-700 text-white px-1.5 py-0.5 rounded-md font-medium whitespace-nowrap">
+                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 text-[8px] bg-slate-700 text-white px-1.5 py-0.5 rounded-md font-medium whitespace-nowrap">
                     BEFORE
                   </span>
                 </div>
 
-                {/* Result */}
+                {/* After */}
                 {item.resultUrl && (
-                  <div className="relative">
-                    {/* Checkerboard bg to show transparency */}
+                  <div className="relative shrink-0">
                     <div
-                      className="w-24 h-24 rounded-xl border-2 border-violet-400 dark:border-violet-500 overflow-hidden"
+                      className="w-[72px] h-[72px] sm:w-24 sm:h-24 rounded-xl border-2 border-violet-400 dark:border-violet-500 overflow-hidden"
                       style={{
                         backgroundImage:
-                          "repeating-conic-gradient(#e5e7eb 0% 25%, white 0% 50%) 0 0 / 12px 12px",
+                          "repeating-conic-gradient(#e5e7eb 0% 25%, white 0% 50%) 0 0 / 10px 10px",
                       }}
                     >
                       <img
@@ -202,15 +223,26 @@ export default function RemoveBgTool() {
                         className="w-full h-full object-contain"
                       />
                     </div>
-                    <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 text-[9px] bg-violet-500 text-white px-1.5 py-0.5 rounded-md font-medium whitespace-nowrap">
+                    <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 text-[8px] bg-violet-500 text-white px-1.5 py-0.5 rounded-md font-medium whitespace-nowrap">
                       AFTER
                     </span>
                   </div>
                 )}
               </div>
 
-              {/* Info & actions */}
-              <div className="flex-1 min-w-0">
+              {/* Remove btn */}
+              {item.status !== "processing" && item.status !== "loading-model" && (
+                <button
+                  onClick={() => remove(index)}
+                  className="p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors shrink-0"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+
+            {/* Info & actions */}
+            <div>
                 <p className="text-sm font-medium text-gray-900 dark:text-white truncate mb-1">
                   {item.original.name}
                 </p>
@@ -218,7 +250,7 @@ export default function RemoveBgTool() {
                   {formatFileSize(item.original.size)}{" "}
                   {item.resultBlob && (
                     <span className="text-violet-500 font-medium ml-1">
-                      → {formatFileSize(item.resultBlob.size)} PNG
+                      → {formatFileSize(item.resultBlob.size)} WebP
                     </span>
                   )}
                 </p>
@@ -238,7 +270,7 @@ export default function RemoveBgTool() {
                     size="sm"
                     onClick={() => processItem(index)}
                     icon={<Sparkles className="w-3.5 h-3.5" />}
-                    className="bg-gradient-to-r from-violet-500 to-purple-600 text-white shadow-md shadow-violet-500/20"
+                    className="bg-gradient-to-r from-violet-500 to-purple-600 text-white shadow-md shadow-violet-500/20 w-full sm:w-auto justify-center"
                   >
                     Remove Background
                   </Button>
@@ -250,12 +282,14 @@ export default function RemoveBgTool() {
                       size="sm"
                       onClick={() => downloadItem(item)}
                       icon={<Download className="w-3.5 h-3.5" />}
+                      className="flex-1 sm:flex-none justify-center"
                     >
-                      Download PNG
+                      Download WebP
                     </Button>
                     <Button
                       size="sm"
                       variant="secondary"
+                      className="flex-1 sm:flex-none justify-center"
                       onClick={() => {
                         setItems((prev) =>
                           prev.map((it, i) =>
@@ -277,17 +311,6 @@ export default function RemoveBgTool() {
                     </Button>
                   </div>
                 )}
-              </div>
-
-              {/* Remove button */}
-              {item.status !== "processing" && item.status !== "loading-model" && (
-                <button
-                  onClick={() => remove(index)}
-                  className="p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors shrink-0 self-start"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              )}
             </div>
           </motion.div>
         ))}
