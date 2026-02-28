@@ -16,6 +16,7 @@ const categoryColors: Record<Tool["category"], string> = {
   pdf: "bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400",
   file: "bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400",
   ai: "bg-violet-50 dark:bg-violet-950/40 text-violet-600 dark:text-violet-400",
+  video: "bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400",
 };
 
 const categoryLabels: Record<Tool["category"], string> = {
@@ -23,6 +24,7 @@ const categoryLabels: Record<Tool["category"], string> = {
   pdf: "PDF",
   file: "File",
   ai: "AI",
+  video: "Video",
 };
 
 export default function ToolCard({ tool, index }: ToolCardProps) {
