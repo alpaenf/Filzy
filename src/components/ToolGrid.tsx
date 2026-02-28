@@ -17,6 +17,9 @@ import {
   FileText,
   FileOutput,
   Layers,
+  QrCode,
+  Stamp,
+  ShieldCheck,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import ToolCard from "./ToolCard";
@@ -41,6 +44,9 @@ const toolIcons: Record<string, LucideIcon> = {
   "word-to-pdf": FileOutput,
   "ppt-to-pdf": Layers,
   "ppt-compress": Minimize2,
+  "qr-code": QrCode,
+  "image-watermark": Stamp,
+  "file-hash": ShieldCheck,
 };
 
 const toolMeta = [
@@ -61,6 +67,9 @@ const toolMeta = [
   { id: "word-to-pdf", href: "/tools/word-to-pdf", gradient: "from-cyan-400 to-cyan-600", category: "pdf" as const },
   { id: "ppt-to-pdf", href: "/tools/ppt-to-pdf", gradient: "from-cyan-400 to-cyan-600", category: "pdf" as const },
   { id: "ppt-compress", href: "/tools/ppt-compress", gradient: "from-cyan-400 to-cyan-600", category: "file" as const },
+  { id: "qr-code", href: "/tools/qr-code", gradient: "from-violet-400 to-purple-600", category: "file" as const },
+  { id: "image-watermark", href: "/tools/image-watermark", gradient: "from-pink-400 to-rose-500", category: "image" as const },
+  { id: "file-hash", href: "/tools/file-hash", gradient: "from-emerald-400 to-teal-600", category: "file" as const },
 ];
 
 export default function ToolGrid() {

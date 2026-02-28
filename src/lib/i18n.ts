@@ -95,6 +95,18 @@ export const translations = {
           title: "Compress PPT",
           description: "Reduce .pptx file size using maximum compression and optional thumbnail removal. No uploads needed.",
         },
+        "qr-code": {
+          title: "QR Code Generator",
+          description: "Generate QR codes from URLs, text, email, phone, or WiFi credentials. Customize colors, size, and download as PNG or SVG.",
+        },
+        "image-watermark": {
+          title: "Image Watermark",
+          description: "Add custom text watermarks to your images with control over position, opacity, size, rotation, and color. All local.",
+        },
+        "file-hash": {
+          title: "File Hash Calculator",
+          description: "Calculate SHA-1, SHA-256, SHA-384, and SHA-512 checksums for any file using the browser's Web Crypto API. Files never leave your device.",
+        },
       },
     },
     features: {
@@ -262,6 +274,18 @@ export const translations = {
         "ppt-compress": {
           title: "Kompres PPT",
           description: "Kurangi ukuran file .pptx dengan kompresi maksimum dan hapus thumbnail opsional. Tanpa upload.",
+        },
+        "qr-code": {
+          title: "Generator Kode QR",
+          description: "Buat kode QR dari URL, teks, email, telepon, atau kredensial WiFi. Kustomisasi warna, ukuran, unduh sebagai PNG atau SVG.",
+        },
+        "image-watermark": {
+          title: "Watermark Gambar",
+          description: "Tambahkan watermark teks kustom ke gambarmu dengan kontrol posisi, opasitas, ukuran, rotasi, dan warna. Semua lokal.",
+        },
+        "file-hash": {
+          title: "Kalkulator Hash File",
+          description: "Hitung checksum SHA-1, SHA-256, SHA-384, dan SHA-512 untuk file apapun menggunakan Web Crypto API browser. File tidak pernah keluar dari perangkatmu.",
         },
       },
     },
