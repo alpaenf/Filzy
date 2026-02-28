@@ -87,6 +87,14 @@ export const translations = {
           title: "Word to PDF",
           description: "Convert Word (.docx) documents into PDF files. Laid out on A4 pages, processed entirely in your browser.",
         },
+        "ppt-to-pdf": {
+          title: "PPT to PDF",
+          description: "Convert PowerPoint (.pptx) presentations into PDF. Each slide becomes a page — all processed in browser.",
+        },
+        "ppt-compress": {
+          title: "Compress PPT",
+          description: "Reduce .pptx file size using maximum compression and optional thumbnail removal. No uploads needed.",
+        },
       },
     },
     features: {
@@ -246,6 +254,14 @@ export const translations = {
         "word-to-pdf": {
           title: "Word ke PDF",
           description: "Konversi dokumen Word (.docx) menjadi file PDF. Ditata dalam halaman A4, diproses sepenuhnya di browsermu.",
+        },
+        "ppt-to-pdf": {
+          title: "PPT ke PDF",
+          description: "Konversi presentasi PowerPoint (.pptx) menjadi PDF. Setiap slide jadi satu halaman — semua di browser.",
+        },
+        "ppt-compress": {
+          title: "Kompres PPT",
+          description: "Kurangi ukuran file .pptx dengan kompresi maksimum dan hapus thumbnail opsional. Tanpa upload.",
         },
       },
     },

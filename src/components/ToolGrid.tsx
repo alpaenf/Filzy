@@ -16,6 +16,7 @@ import {
   Music,
   FileText,
   FileOutput,
+  Layers,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import ToolCard from "./ToolCard";
@@ -38,6 +39,8 @@ const toolIcons: Record<string, LucideIcon> = {
   "video-to-mp3": Music,
   "pdf-to-word": FileText,
   "word-to-pdf": FileOutput,
+  "ppt-to-pdf": Layers,
+  "ppt-compress": Minimize2,
 };
 
 const toolMeta = [
@@ -56,6 +59,8 @@ const toolMeta = [
   { id: "video-to-mp3", href: "/tools/video-to-mp3", gradient: "from-cyan-400 to-cyan-600", category: "video" as const },
   { id: "pdf-to-word", href: "/tools/pdf-to-word", gradient: "from-cyan-400 to-cyan-600", category: "pdf" as const },
   { id: "word-to-pdf", href: "/tools/word-to-pdf", gradient: "from-cyan-400 to-cyan-600", category: "pdf" as const },
+  { id: "ppt-to-pdf", href: "/tools/ppt-to-pdf", gradient: "from-cyan-400 to-cyan-600", category: "pdf" as const },
+  { id: "ppt-compress", href: "/tools/ppt-compress", gradient: "from-cyan-400 to-cyan-600", category: "file" as const },
 ];
 
 export default function ToolGrid() {
