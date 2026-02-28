@@ -104,15 +104,6 @@ export default function Navbar() {
             ))}
           </div>
 
-          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-            <Link
-              href="/#tools"
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-cyan-400 to-cyan-600 text-white shadow-md hover:shadow-cyan-500/30 transition-shadow duration-300"
-            >
-              {t.nav.getStarted}
-            </Link>
-          </motion.div>
-
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}

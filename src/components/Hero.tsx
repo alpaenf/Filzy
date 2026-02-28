@@ -4,8 +4,37 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Zap, Cpu } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useState, useEffect } from "react";
 
 const highlightIcons = [Shield, Zap, Cpu];
+
+function TypingText({ text, delay = 0 }: { text: string; delay?: number }) {
+  const [displayed, setDisplayed] = useState("");
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const startTimer = setTimeout(() => setStarted(true), delay * 1000);
+    return () => clearTimeout(startTimer);
+  }, [delay]);
+
+  useEffect(() => {
+    if (!started) return;
+    if (displayed.length >= text.length) return;
+    const timer = setTimeout(() => {
+      setDisplayed(text.slice(0, displayed.length + 1));
+    }, 18);
+    return () => clearTimeout(timer);
+  }, [started, displayed, text]);
+
+  return (
+    <span>
+      {displayed}
+      {displayed.length < text.length && (
+        <span className="inline-block w-0.5 h-5 ml-0.5 bg-cyan-500 align-middle animate-pulse" />
+      )}
+    </span>
+  );
+}
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -44,10 +73,10 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.35 }}
+          transition={{ duration: 0.3, delay: 0.35 }}
           className="text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          {t.hero.sub}
+          <TypingText text={t.hero.sub} delay={0.65} />
         </motion.p>
 
         {/* CTA Buttons */}
