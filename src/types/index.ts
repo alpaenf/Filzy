@@ -8,7 +8,7 @@ export interface Tool {
   href: string;
   gradient: string;
   badge?: string;
-  category: "image" | "pdf" | "file" | "ai";
+  category: "image" | "pdf" | "file" | "ai" | "video";
 }
 
 export interface ProcessedFile {

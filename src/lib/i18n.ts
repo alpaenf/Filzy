@@ -67,6 +67,18 @@ export const translations = {
           title: "File Info & Converter",
           description: "View detailed file metadata and convert file size units — KB, MB, GB, TB.",
         },
+        "video-to-gif": {
+          title: "Video to GIF",
+          description: "Convert MP4, WebM, or MOV video clips into animated GIFs. Control FPS, resolution, and duration — all in browser.",
+        },
+        "gif-to-video": {
+          title: "GIF to Video",
+          description: "Convert animated GIF files into MP4 videos. Lightweight, fast, and processed entirely in your browser.",
+        },
+        "video-to-mp3": {
+          title: "Video to MP3",
+          description: "Extract audio from MP4, WebM, or MOV videos and save as MP3. No uploads, runs fully in browser.",
+        },
       },
     },
     features: {
@@ -206,6 +218,18 @@ export const translations = {
         "file-info": {
           title: "Info File & Konverter",
           description: "Lihat metadata file secara detail dan konversi satuan ukuran file — KB, MB, GB, TB.",
+        },
+        "video-to-gif": {
+          title: "Video ke GIF",
+          description: "Konversi klip video MP4, WebM, atau MOV menjadi GIF animasi. Atur FPS, resolusi, dan durasi — semua di browser.",
+        },
+        "gif-to-video": {
+          title: "GIF ke Video",
+          description: "Konversi file GIF animasi menjadi video MP4. Ringan, cepat, dan diproses sepenuhnya di browsermu.",
+        },
+        "video-to-mp3": {
+          title: "Video ke MP3",
+          description: "Ekstrak audio dari video MP4, WebM, atau MOV dan simpan sebagai MP3. Tanpa upload, berjalan penuh di browser.",
         },
       },
     },
