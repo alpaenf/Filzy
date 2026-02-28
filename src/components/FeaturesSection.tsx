@@ -26,7 +26,7 @@ export default function FeaturesSection() {
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             {t.features.heading1}{" "}
-            <span className="bg-gradient-to-r from-sky-500 to-violet-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent">
               {t.features.heading2}
             </span>
           </h2>

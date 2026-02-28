@@ -19,17 +19,6 @@ export default function Hero() {
       </div>
 
       <div className="max-w-5xl mx-auto text-center">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-50 dark:bg-sky-950/50 border border-sky-200 dark:border-sky-800 text-sky-600 dark:text-sky-400 text-sm font-medium mb-8"
-        >
-          <span className="w-2 h-2 rounded-full bg-sky-500 animate-pulse" />
-          {t.hero.badge}
-        </motion.div>
-
         {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
@@ -39,11 +28,11 @@ export default function Hero() {
         >
           {t.hero.headline1}{" "}
           <span className="relative inline-block">
-            <span className="bg-gradient-to-r from-sky-500 via-blue-600 to-violet-600 bg-clip-text text-transparent animate-gradient-x">
+            <span className="bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent animate-gradient-x">
               {t.hero.headline2}
             </span>
             <motion.span
-              className="absolute -bottom-1 left-0 right-0 h-1 rounded-full bg-gradient-to-r from-sky-500 to-violet-600"
+              className="absolute -bottom-1 left-0 right-0 h-1 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-600"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.7 }}
@@ -71,7 +60,7 @@ export default function Hero() {
           <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
             <Link
               href="#tools"
-              className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl font-semibold bg-gradient-to-r from-sky-500 to-violet-600 text-white shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 transition-shadow duration-300"
+              className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl font-semibold bg-gradient-to-r from-cyan-400 to-cyan-600 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-shadow duration-300"
             >
               {t.hero.exploreBtn}
               <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
@@ -101,8 +90,8 @@ export default function Hero() {
               key={label}
               className="flex items-center gap-3 p-4 rounded-2xl bg-white dark:bg-gray-900 border border-slate-200/80 dark:border-gray-700/80 shadow-sm hover:shadow-md transition-shadow duration-200"
             >
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-100 to-violet-100 dark:from-sky-900/40 dark:to-violet-900/40 flex items-center justify-center shrink-0">
-                <Icon className="w-5 h-5 text-sky-600 dark:text-sky-400" />
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-100 to-cyan-200 dark:from-cyan-900/40 dark:to-cyan-800/40 flex items-center justify-center shrink-0">
+                <Icon className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
               </div>
               <div className="text-left">
                 <p className="text-sm font-semibold text-gray-900 dark:text-white">{label}</p>

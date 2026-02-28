@@ -115,7 +115,7 @@ export default function ImageConvertTool() {
                   onClick={() => setOutputFormat(f.value)}
                   className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-150 ${
                     outputFormat === f.value
-                      ? "bg-gradient-to-r from-sky-500 to-violet-600 text-white shadow-md"
+                      ? "bg-gradient-to-r from-cyan-400 to-cyan-600 text-white shadow-md"
                       : "bg-slate-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-slate-200 dark:hover:bg-gray-700"
                   }`}
                 >

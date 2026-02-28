@@ -31,16 +31,16 @@ const toolIcons: Record<string, LucideIcon> = {
 };
 
 const toolMeta = [
-  { id: "image-compress", href: "/tools/image-compress", gradient: "from-sky-400 to-blue-500", category: "image" as const },
-  { id: "image-convert", href: "/tools/image-convert", gradient: "from-cyan-400 to-teal-500", category: "image" as const },
-  { id: "remove-bg", href: "/tools/remove-bg", gradient: "from-violet-400 to-purple-600", category: "ai" as const, badge: "AI" },
-  { id: "image-to-pdf", href: "/tools/image-to-pdf", gradient: "from-sky-400 to-indigo-500", category: "image" as const },
-  { id: "pdf-to-image", href: "/tools/pdf-to-image", gradient: "from-fuchsia-400 to-pink-500", category: "pdf" as const },
-  { id: "pdf-merge", href: "/tools/pdf-merge", gradient: "from-rose-400 to-red-500", category: "pdf" as const },
-  { id: "pdf-split", href: "/tools/pdf-split", gradient: "from-orange-400 to-amber-500", category: "pdf" as const },
-  { id: "pdf-compress", href: "/tools/pdf-compress", gradient: "from-red-400 to-rose-500", category: "pdf" as const },
-  { id: "bulk-rename", href: "/tools/bulk-rename", gradient: "from-amber-400 to-yellow-500", category: "file" as const },
-  { id: "file-info", href: "/tools/file-info", gradient: "from-emerald-400 to-green-500", category: "file" as const },
+  { id: "image-compress", href: "/tools/image-compress", gradient: "from-cyan-400 to-cyan-600", category: "image" as const },
+  { id: "image-convert", href: "/tools/image-convert", gradient: "from-cyan-400 to-cyan-600", category: "image" as const },
+  { id: "remove-bg", href: "/tools/remove-bg", gradient: "from-cyan-400 to-cyan-600", category: "ai" as const, badge: "AI" },
+  { id: "image-to-pdf", href: "/tools/image-to-pdf", gradient: "from-cyan-400 to-cyan-600", category: "image" as const },
+  { id: "pdf-to-image", href: "/tools/pdf-to-image", gradient: "from-cyan-400 to-cyan-600", category: "pdf" as const },
+  { id: "pdf-merge", href: "/tools/pdf-merge", gradient: "from-cyan-400 to-cyan-600", category: "pdf" as const },
+  { id: "pdf-split", href: "/tools/pdf-split", gradient: "from-cyan-400 to-cyan-600", category: "pdf" as const },
+  { id: "pdf-compress", href: "/tools/pdf-compress", gradient: "from-cyan-400 to-cyan-600", category: "pdf" as const },
+  { id: "bulk-rename", href: "/tools/bulk-rename", gradient: "from-cyan-400 to-cyan-600", category: "file" as const },
+  { id: "file-info", href: "/tools/file-info", gradient: "from-cyan-400 to-cyan-600", category: "file" as const },
 ];
 
 export default function ToolGrid() {
@@ -62,7 +62,7 @@ export default function ToolGrid() {
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             {t.tools.heading1}{" "}
-            <span className="bg-gradient-to-r from-sky-500 to-violet-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent">
               {t.tools.heading2}
             </span>
           </h2>

@@ -13,7 +13,7 @@ interface ProgressBarProps {
 const variants = {
   default: "from-sky-400 to-blue-500",
   success: "from-emerald-400 to-green-500",
-  ai: "from-violet-400 to-purple-600",
+  ai: "from-cyan-400 to-cyan-600",
 };
 
 export default function ProgressBar({ value, label, className, variant = "default" }: ProgressBarProps) {

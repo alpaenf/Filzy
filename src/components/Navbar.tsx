@@ -87,29 +87,27 @@ export default function Navbar() {
           )}
 
           {/* Language toggle */}
-          {mounted && (
-            <div className="flex items-center rounded-xl border border-slate-200 dark:border-gray-700 overflow-hidden">
-              {(["id", "en"] as const).map((lang) => (
-                <button
-                  key={lang}
-                  onClick={() => setLocale(lang)}
-                  className={cn(
-                    "px-2.5 py-1.5 text-xs font-semibold uppercase transition-colors duration-150",
-                    locale === lang
-                      ? "bg-sky-500 text-white"
-                      : "text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white"
-                  )}
-                >
-                  {lang}
-                </button>
-              ))}
-            </div>
-          )}
+          <div className="flex items-center rounded-xl border border-slate-200 dark:border-gray-700 overflow-hidden">
+            {(["id", "en"] as const).map((lang) => (
+              <button
+                key={lang}
+                onClick={() => setLocale(lang)}
+                className={cn(
+                  "px-2.5 py-1.5 text-xs font-semibold uppercase transition-colors duration-150",
+                  locale === lang
+                    ? "bg-cyan-500 text-white"
+                    : "text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white"
+                )}
+              >
+                {lang}
+              </button>
+            ))}
+          </div>
 
           <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
             <Link
               href="/#tools"
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-sky-500 to-violet-600 text-white shadow-md hover:shadow-sky-500/30 transition-shadow duration-300"
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-cyan-400 to-cyan-600 text-white shadow-md hover:shadow-cyan-500/30 transition-shadow duration-300"
             >
               {t.nav.getStarted}
             </Link>

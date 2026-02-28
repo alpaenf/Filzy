@@ -23,7 +23,7 @@ export default function AboutSection() {
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
               {t.about.heading1}{" "}
-              <span className="bg-gradient-to-r from-sky-500 to-violet-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent">
                 {t.about.heading2}
               </span>
             </h2>
@@ -65,7 +65,7 @@ export default function AboutSection() {
                 transition={{ duration: 0.4, delay: 0.15 + i * 0.08 }}
                 className="bg-slate-50 dark:bg-gray-800 rounded-2xl p-6 text-center hover:shadow-md transition-shadow duration-300"
               >
-                <p className="text-4xl font-bold bg-gradient-to-r from-sky-500 to-violet-600 bg-clip-text text-transparent mb-1">
+                <p className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent mb-1">
                   {statValues[i]}
                 </p>
                 <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">{label}</p>
