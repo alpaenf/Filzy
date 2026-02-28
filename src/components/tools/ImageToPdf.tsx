@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Download, X, ChevronUp, ChevronDown, FileDown, Loader2 } from "lucide-react";
+import { Download, X, ChevronUp, ChevronDown, FileDown, Loader2, Plus } from "lucide-react";
 import DropZone from "@/components/ui/DropZone";
 import Button from "@/components/ui/Button";
 import { formatFileSize, downloadBlob } from "@/lib/utils";
@@ -81,6 +81,13 @@ export default function ImageToPdfTool() {
   const [orientation, setOrientation] = useState<Orientation>("portrait");
   const [margin, setMargin] = useState(20);
   const [converting, setConverting] = useState(false);
+  const addMoreRef = useRef<HTMLInputElement>(null);
+
+  const addMoreFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return;
+    handleFiles(Array.from(e.target.files));
+    e.target.value = "";
+  };
 
   const handleFiles = useCallback((files: File[]) => {
     const imageFiles = files.filter((f) => f.type.startsWith("image/"));
@@ -232,13 +239,15 @@ export default function ImageToPdfTool() {
       </div>
 
       {/* DropZone */}
-      <DropZone
-        onFiles={handleFiles}
-        accept="image/*"
-        multiple
-        label="Drop images here"
-        sublabel="JPG, PNG, WEBP · Each image becomes one page in the PDF"
-      />
+      {images.length === 0 ? (
+        <DropZone
+          onFiles={handleFiles}
+          accept="image/*"
+          multiple
+          label="Drop images here"
+          sublabel="JPG, PNG, WEBP · Bisa lebih dari 1 · Setiap gambar jadi 1 halaman di PDF"
+        />
+      ) : null}
 
       {/* Image list */}
       <AnimatePresence>
@@ -249,7 +258,7 @@ export default function ImageToPdfTool() {
             className="space-y-2"
           >
             <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
-              {images.length} image{images.length > 1 ? "s" : ""} · {images.length} page{images.length > 1 ? "s" : ""} in PDF
+              {images.length} gambar · {images.length} halaman di PDF
             </p>
 
             {images.map((item, index) => (
@@ -296,14 +305,30 @@ export default function ImageToPdfTool() {
             ))}
 
             {/* Convert button */}
-            <div className="pt-2">
+            <div className="pt-2 flex flex-wrap gap-3 items-center">
+              {/* Hidden file input for adding more */}
+              <input
+                ref={addMoreRef}
+                type="file"
+                accept="image/*"
+                multiple
+                className="hidden"
+                onChange={addMoreFiles}
+              />
+              <button
+                onClick={() => addMoreRef.current?.click()}
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-semibold border border-dashed border-cyan-400 text-cyan-600 dark:text-cyan-400 hover:bg-cyan-50 dark:hover:bg-cyan-950/30 transition-colors"
+              >
+                <Plus className="w-4 h-4" />
+                Tambah Gambar
+              </button>
               <Button
                 onClick={convert}
                 disabled={converting}
                 icon={converting ? <Loader2 className="w-4 h-4 animate-spin" /> : <FileDown className="w-4 h-4" />}
-                className="w-full sm:w-auto justify-center"
+                className="flex-1 sm:flex-none justify-center"
               >
-                {converting ? "Creating PDF..." : `Convert ${images.length} Image${images.length > 1 ? "s" : ""} to PDF`}
+                {converting ? "Membuat PDF..." : `Konversi ${images.length} Gambar ke PDF`}
               </Button>
             </div>
           </motion.div>
