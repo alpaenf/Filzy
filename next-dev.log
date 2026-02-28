@@ -1,0 +1,77 @@
+‘˚¶ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.100.10:3000
+
+‘£Ù Starting...
+‘£Ù Ready in 1100ms
+Only plain objects can be passed to Client Components from Server Components. Classes or other objects with methods are not supported.
+  {id: ..., title: ..., description: ..., icon: {$$typeof: ..., render: ...}, href: ..., gradient: ..., category: ...}
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Only plain objects can be passed to Client Components from Server Components. Classes or other objects with methods are not supported.
+  {id: ..., title: ..., description: ..., icon: {$$typeof: ..., render: ...}, href: ..., gradient: ..., category: ...}
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Only plain objects can be passed to Client Components from Server Components. Classes or other objects with methods are not supported.
+  {id: ..., title: ..., description: ..., icon: {$$typeof: ..., render: ...}, href: ..., gradient: ..., category: ..., badge: ...}
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Only plain objects can be passed to Client Components from Server Components. Classes or other objects with methods are not supported.
+  {id: ..., title: ..., description: ..., icon: {$$typeof: ..., render: ...}, href: ..., gradient: ..., category: ...}
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Only plain objects can be passed to Client Components from Server Components. Classes or other objects with methods are not supported.
+  {id: ..., title: ..., description: ..., icon: {$$typeof: ..., render: ...}, href: ..., gradient: ..., category: ...}
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Only plain objects can be passed to Client Components from Server Components. Classes or other objects with methods are not supported.
+  {id: ..., title: ..., description: ..., icon: {$$typeof: ..., render: ...}, href: ..., gradient: ..., category: ...}
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Only plain objects can be passed to Client Components from Server Components. Classes or other objects with methods are not supported.
+  {id: ..., title: ..., description: ..., icon: {$$typeof: ..., render: ...}, href: ..., gradient: ..., category: ...}
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Only plain objects can be passed to Client Components from Server Components. Classes or other objects with methods are not supported.
+  {id: ..., title: ..., description: ..., icon: {$$typeof: ..., render: ...}, href: ..., gradient: ..., category: ...}
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+‘øª Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  {$$typeof: ..., render: function Minimize2}
+                          ^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>) {
+  digest: '811957560'
+}
+‘øª Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  {$$typeof: ..., render: function ArrowLeftRight}
+                          ^^^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>) {
+  digest: '2440002552'
+}
+‘øª Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+                          ^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>) {
+  digest: '2504752152'
+}
+‘øª Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  {$$typeof: ..., render: function ChartColumn}
+                          ^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>) {
+  digest: '1932940664'
+}
+ GET / 500 in 2.6s (compile: 443ms, render: 2.2s)
+‘‹· Fast Refresh had to perform a full reload due to a runtime error.
+ GET / 200 in 234ms (compile: 68ms, render: 167ms)
+ GET / 200 in 225ms (compile: 26ms, render: 199ms)
+ GET /tools/remove-bg 200 in 2.9s (compile: 2.8s, render: 46ms)
+ GET / 200 in 99ms (compile: 38ms, render: 61ms)
+ GET / 200 in 215ms (compile: 18ms, render: 197ms)
+ GET / 200 in 208ms (compile: 43ms, render: 165ms)
+ GET / 200 in 202ms (compile: 38ms, render: 165ms)
+ GET / 200 in 572ms (compile: 235ms, render: 337ms)
+ GET / 200 in 221ms (compile: 22ms, render: 199ms)
+ GET / 200 in 219ms (compile: 100ms, render: 119ms)
+ GET / 200 in 65ms (compile: 8ms, render: 57ms)
+ GET / 200 in 452ms (compile: 50ms, render: 402ms)
+‘£Ù Compiled in 362ms
+ GET / 200 in 450ms (compile: 135ms, render: 314ms)
